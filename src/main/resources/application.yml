@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+lostark:
+  main-url: https://lostark.game.onstove.com/Main
+  element:
+    xpath:
+      popup-close-button: /html/body/div[3]/div/div/div[2]/button[2]
+      go-to-trade-link: /html/body/div[2]/header/nav/ul/li[6]/a
+      user-id-input: /html/body/div[1]/div[2]/div/fieldset[1]/div[1]/div[1]/input
+      password-input: /html/body/div[1]/div[2]/div/fieldset[1]/div[1]/div[2]/input
+      login-submit-button: /html/body/div[1]/div[2]/div/fieldset[1]/div[4]/button
+      auction-search-input: /html/body/div[2]/div/main/div/div[3]/div[2]/form/fieldset/div/div[1]/input
+      auction-search-button: /html/body/div[2]/div/main/div/div[3]/div[2]/form/fieldset/div/div[4]/button[1]
+      cost-result: /html/body/div[2]/div/main/div/div[3]/div[2]/div/div/div[1]/table/tbody/tr/td[4]/div/em
+logging:
+  level:
+    root: debug
