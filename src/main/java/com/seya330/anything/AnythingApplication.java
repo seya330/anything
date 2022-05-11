@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 @SpringBootApplication
 public class AnythingApplication {
   public static void main(String[] args) {
-    System.exit(SpringApplication.exit(SpringApplication.run(AnythingApplication.class, args)));
+//    System.exit(SpringApplication.exit(SpringApplication.run(AnythingApplication.class, args)));
+    SpringApplication.run(AnythingApplication.class, args);
   }
 }

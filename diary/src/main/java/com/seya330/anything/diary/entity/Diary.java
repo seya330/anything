@@ -1,4 +1,4 @@
-package com.seya330.anything.lostark.domain.auction;
+package com.seya330.anything.diary.entity;
 
 import lombok.*;
 
@@ -7,17 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@Entity
-public class DestructionStoneCrystal {
+public class Diary {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Long seq;
 
-  private int cost;
+  private String content;
 }

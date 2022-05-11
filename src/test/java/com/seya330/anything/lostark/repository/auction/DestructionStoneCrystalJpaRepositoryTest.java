@@ -1,14 +1,19 @@
 package com.seya330.anything.lostark.repository.auction;
 
+import com.seya330.anything.config.JpaConfig;
 import com.seya330.anything.lostark.domain.auction.DestructionStoneCrystal;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 
 @DataJpaTest
-//@ActiveProfiles("dev")
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@ActiveProfiles("dev")
+@Import(JpaConfig.class)
 class DestructionStoneCrystalJpaRepositoryTest {
 
   @Autowired
