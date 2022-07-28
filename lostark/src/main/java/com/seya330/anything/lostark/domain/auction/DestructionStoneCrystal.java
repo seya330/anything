@@ -1,6 +1,6 @@
 package com.seya330.anything.lostark.domain.auction;
 
-import com.seya330.anything.lostark.domain.common.BaseEntity;
+import com.seya330.anything.common.BaseEntity;
 import lombok.*;
 
 import javax.persistence.Entity;

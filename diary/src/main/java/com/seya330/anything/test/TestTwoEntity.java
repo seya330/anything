@@ -1,6 +1,5 @@
-package com.seya330.anything.diary.entity;
+package com.seya330.anything.test;
 
-import com.seya330.anything.common.BaseEntity;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -9,16 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-@Getter
-@Setter
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Diary extends BaseEntity {
+@EqualsAndHashCode
+public class TestTwoEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long seq;
-
-  private String content;
 }

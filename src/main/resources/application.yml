@@ -16,3 +16,17 @@ lostark:
 logging:
   level:
     root: debug
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lostark
+    username: anything
+    password: anything
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  batch:
+    jdbc:
+      initialize-schema: always

@@ -1,0 +1,10 @@
+plugins {
+    id "persistence-convention"
+}
+
+dependencies {
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
