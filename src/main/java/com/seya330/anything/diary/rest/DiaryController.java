@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/diaries")
@@ -36,5 +38,10 @@ public class DiaryController {
   @GetMapping
   public ResponseEntity<Page<Diary>> getDiaries(@PageableDefault final Pageable pageable, final DiaryQuery diaryQuery) {
     return ResponseEntity.ok(diaryQueryProcessor.get(diaryQuery, pageable));
+  }
+
+  @GetMapping("/registered-date")
+  public ResponseEntity<Set> getRegisteredDiary(final LocalDate startDate, final LocalDate endDate) {
+    return ResponseEntity.ok(diaryQueryProcessor.getDiaryRegisteredDate(startDate, endDate));
   }
 }

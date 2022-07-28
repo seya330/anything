@@ -30,3 +30,8 @@ spring:
   batch:
     jdbc:
       initialize-schema: always
+  mvc:
+    format:
+      date: iso
+      date-time: iso
+    log-request-details: true

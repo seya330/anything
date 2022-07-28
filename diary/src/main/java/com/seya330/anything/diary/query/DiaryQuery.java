@@ -3,15 +3,15 @@ package com.seya330.anything.diary.query;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.seya330.anything.diary.entity.QDiary;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Value
+@Data
 @Builder
 public class DiaryQuery {
 
-  PeriodSearch periodSearch;
+  private PeriodSearch periodSearch;
 
   public BooleanExpression forPeriodSearch(final QDiary qDiary) {
     if (periodSearch == null) return null;
@@ -24,15 +24,15 @@ public class DiaryQuery {
     }
   }
 
-  @Value
+  @Data
   @Builder
   public static class PeriodSearch {
 
-    PeriodSearchType periodSearchType;
+    private PeriodSearchType periodSearchType;
 
-    LocalDateTime searchStartAt;
+    private LocalDateTime searchStartAt;
 
-    LocalDateTime searchEndAt;
+    private LocalDateTime searchEndAt;
   }
 
   public enum PeriodSearchType {
