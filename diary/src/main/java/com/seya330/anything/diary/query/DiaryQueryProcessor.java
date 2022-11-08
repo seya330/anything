@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,7 @@ public class DiaryQueryProcessor {
     return diaryRepository.query(diaryQuery, pageable);
   }
 
-  public Set<LocalDateTime> getDiaryRegisteredDate(final LocalDate startDate, final LocalDate endDate) {
+  public Map<LocalDateTime, Long> getDiaryRegistered(final LocalDate startDate, final LocalDate endDate) {
     final Page<Diary> diaries = diaryRepository.query(DiaryQuery.builder()
         .periodSearch(DiaryQuery.PeriodSearch.builder()
             .periodSearchType(DiaryQuery.PeriodSearchType.REGISTERED_AT)
@@ -35,6 +36,6 @@ public class DiaryQueryProcessor {
             .searchEndAt(endDate.atTime(LocalTime.MAX))
             .build())
         .build(), Pageable.unpaged());
-    return diaries.stream().map(Diary::getRegisteredAt).collect(Collectors.toSet());
+    return diaries.stream().collect(Collectors.toMap(Diary::getRegisteredAt, Diary::getSeq));
   }
 }

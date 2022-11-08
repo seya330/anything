@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -44,7 +45,7 @@ public class DiaryController {
   }
 
   @GetMapping("/registered-date")
-  public ResponseEntity<Set<LocalDateTime>> getRegisteredDiary(final LocalDate startDate, final LocalDate endDate) {
-    return ResponseEntity.ok(diaryQueryProcessor.getDiaryRegisteredDate(startDate, endDate));
+  public ResponseEntity<Map<LocalDateTime, Long>> getRegisteredDiary(final LocalDate startDate, final LocalDate endDate) {
+    return ResponseEntity.ok(diaryQueryProcessor.getDiaryRegistered(startDate, endDate));
   }
 }
