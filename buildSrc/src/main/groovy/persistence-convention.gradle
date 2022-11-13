@@ -1,44 +1,46 @@
 plugins {
-    id "java"
-    id "org.springframework.boot"
-    id "io.spring.dependency-management"
+  id "java"
+  id "org.springframework.boot"
+  id "io.spring.dependency-management"
 }
 
-group = 'com.example'
+group = 'com.seya330'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 bootJar.enabled = false
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
 }
 
 dependencyManagement {
-    imports {
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-    }
+  imports {
+    mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+  }
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'mysql:mysql-connector-java'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    implementation 'javax.validation:validation-api:2.0.1.Final'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation "com.querydsl:querydsl-core"
-    implementation "com.querydsl:querydsl-jpa"
-    annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties["querydsl.version"]}:jpa")
-    annotationProcessor("jakarta.persistence:jakarta.persistence-api")
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  compileOnly 'org.projectlombok:lombok'
+  runtimeOnly 'mysql:mysql-connector-java'
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  implementation 'javax.validation:validation-api:2.0.1.Final'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+  implementation "com.querydsl:querydsl-core"
+  implementation "com.querydsl:querydsl-jpa"
+  implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+  annotationProcessor 'org.projectlombok:lombok'
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties["querydsl.version"]}:jpa")
+  annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+  annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

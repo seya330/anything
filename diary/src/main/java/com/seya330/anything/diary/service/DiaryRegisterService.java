@@ -13,9 +13,10 @@ public class DiaryRegisterService {
   private final DiaryJpaRepository diaryJpaRepository;
 
   @Transactional
-  public Long register(final String content) {
+  public Long register(final String content, final Long registeredBy) {
     final Diary diary = diaryJpaRepository.save(Diary.builder()
         .content(content)
+        .registeredBy(registeredBy)
         .build());
     return diary.getSeq();
   }
