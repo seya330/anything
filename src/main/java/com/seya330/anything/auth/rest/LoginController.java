@@ -1,10 +1,10 @@
 package com.seya330.anything.auth.rest;
 
-import com.seya330.anything.auth.converter.UserProfileResponseConverter;
 import com.seya330.anything.auth.dto.UserProfileResult;
 import com.seya330.anything.auth.payload.AuthRequest;
-import com.seya330.anything.auth.payload.UserProfileResponse;
+import com.seya330.anything.auth.payload.LoginResponse;
 import com.seya330.anything.auth.service.GoogleLoginService;
+import com.seya330.anything.auth.config.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,15 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class LoginController {
 
+  private final JwtUtils jwtUtils;
+
   private final GoogleLoginService googleLoginService;
 
-  private final UserProfileResponseConverter userProfileResponseConverter;
-
   @PostMapping("/google")
-  public ResponseEntity<UserProfileResponse> googleLogin(@RequestBody final AuthRequest authRequest) {
+  public ResponseEntity<LoginResponse> googleLogin(@RequestBody final AuthRequest authRequest) {
     final UserProfileResult user = googleLoginService.login(authRequest.getToken());
+    final LoginResponse loginResponse = LoginResponse.builder()
+        .name(user.getName())
+        .email(user.getEmail())
+        .token(jwtUtils.createToken(String.valueOf(user.getSeq())))
+        .build();
     return ResponseEntity.ok()
-        .body(userProfileResponseConverter.convert(user));
+        .body(loginResponse);
   }
 
 }

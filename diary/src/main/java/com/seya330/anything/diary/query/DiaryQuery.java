@@ -17,6 +17,8 @@ public class DiaryQuery {
 
   private PeriodSearch periodSearch;
 
+  private Long registeredBy;
+
   public BooleanExpression forPeriodSearch(final QDiary qDiary) {
     if (periodSearch == null) return null;
 

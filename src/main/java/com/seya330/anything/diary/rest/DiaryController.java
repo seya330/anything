@@ -1,5 +1,6 @@
 package com.seya330.anything.diary.rest;
 
+import com.seya330.anything.auth.utils.AuthUtils;
 import com.seya330.anything.diary.entity.Diary;
 import com.seya330.anything.diary.payload.DiaryPostRequest;
 import com.seya330.anything.diary.query.DiaryQuery;
@@ -17,7 +18,6 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/diaries")
@@ -31,7 +31,7 @@ public class DiaryController {
   @PostMapping
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void register(@RequestBody @Valid final DiaryPostRequest diaryPostRequest) {
-    diaryRegisterService.register(diaryPostRequest.getContent());
+    diaryRegisterService.register(diaryPostRequest.getContent(), AuthUtils.getUserId());
   }
 
   @GetMapping("/{seq}")
@@ -41,11 +41,12 @@ public class DiaryController {
 
   @GetMapping
   public ResponseEntity<Page<Diary>> getDiaries(@PageableDefault final Pageable pageable, @ModelAttribute final DiaryQuery diaryQuery) {
+    diaryQuery.setRegisteredBy(AuthUtils.getUserId());
     return ResponseEntity.ok(diaryQueryProcessor.get(diaryQuery, pageable));
   }
 
   @GetMapping("/registered-date")
   public ResponseEntity<Map<LocalDateTime, Long>> getRegisteredDiary(final LocalDate startDate, final LocalDate endDate) {
-    return ResponseEntity.ok(diaryQueryProcessor.getDiaryRegistered(startDate, endDate));
+    return ResponseEntity.ok(diaryQueryProcessor.getDiaryRegistered(startDate, endDate, AuthUtils.getUserId()));
   }
 }

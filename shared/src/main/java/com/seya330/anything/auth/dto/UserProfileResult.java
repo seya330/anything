@@ -8,7 +8,7 @@ import lombok.Value;
 @Builder
 public class UserProfileResult {
 
-  long id;
+  long seq;
 
   String email;
 

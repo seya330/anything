@@ -3,7 +3,6 @@ plugins {
 }
 
 dependencies {
-  implementation 'com.google.api-client:google-api-client:2.0.0'
 }
 
 tasks.named('test') {

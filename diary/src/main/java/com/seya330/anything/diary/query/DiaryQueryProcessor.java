@@ -28,8 +28,9 @@ public class DiaryQueryProcessor {
     return diaryRepository.query(diaryQuery, pageable);
   }
 
-  public Map<LocalDateTime, Long> getDiaryRegistered(final LocalDate startDate, final LocalDate endDate) {
+  public Map<LocalDateTime, Long> getDiaryRegistered(final LocalDate startDate, final LocalDate endDate, final Long userId) {
     final Page<Diary> diaries = diaryRepository.query(DiaryQuery.builder()
+        .registeredBy(userId)
         .periodSearch(DiaryQuery.PeriodSearch.builder()
             .periodSearchType(DiaryQuery.PeriodSearchType.REGISTERED_AT)
             .searchStartAt(startDate.atStartOfDay())

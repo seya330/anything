@@ -1,9 +1,13 @@
 package com.seya330.anything.auth.payload;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class UserProfileResponse {
+@Builder
+public class LoginResponse {
+
+  private String token;
 
   private String email;
 

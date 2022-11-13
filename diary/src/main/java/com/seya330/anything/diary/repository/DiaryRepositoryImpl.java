@@ -34,6 +34,7 @@ public class DiaryRepositoryImpl extends QuerydslRepositorySupport implements Di
     final JPQLQuery<Diary> query = getQuerydsl().applyPagination(page,
         from(diary)
             .where(
+                diary.registeredBy.eq(diaryQuery.getRegisteredBy()),
                 diaryQuery.forPeriodSearch(diary)
             ));
     return new PageImpl<>(query.fetch(), page, query.fetchCount());

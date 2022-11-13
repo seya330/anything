@@ -1,4 +1,4 @@
-package com.seya330.anything.config;
+package com.seya330.anything.auth.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
