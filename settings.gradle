@@ -1,2 +1,2 @@
 rootProject.name = 'anything'
-include ('diary', 'shared', 'lostark')
+include ('diary', 'shared', 'lostark', 'todo')
