@@ -39,7 +39,7 @@ class TodoItemCompleteServiceTest {
             .isStarred(false)
             .startedAt(LocalDateTime.now())
             .endedAt(LocalDateTime.now())
-            .order(1)
+            .numberOfOrder(1)
             .isDeleted(false)
             .build());
     todoItemCompleteService.complete(1L);
@@ -59,7 +59,7 @@ class TodoItemCompleteServiceTest {
             .isStarred(false)
             .startedAt(LocalDateTime.now())
             .endedAt(LocalDateTime.now())
-            .order(1)
+            .numberOfOrder(1)
             .isDeleted(false)
             .build());
 

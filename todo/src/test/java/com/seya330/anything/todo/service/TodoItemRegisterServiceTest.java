@@ -39,7 +39,7 @@ class TodoItemRegisterServiceTest {
     todoItemRegisterService.register(arg);
     final ArgumentCaptor<TodoItem> captor = ArgumentCaptor.forClass(TodoItem.class);
     verify(todoItemRepository).save(captor.capture());
-    assertThat(captor.getValue().getOrder()).isEqualTo(6);
+    assertThat(captor.getValue().getNumberOfOrder()).isEqualTo(6);
     assertThat(captor.getValue().getStartedAt()).isEqualTo(LocalDate.now().atStartOfDay());
     assertThat(captor.getValue().getEndedAt()).isEqualTo(LocalDate.now().atTime(LocalTime.MAX));
     assertThat(captor.getValue().getStatus()).isEqualTo(TodoItemStatus.ADDED);
@@ -60,7 +60,7 @@ class TodoItemRegisterServiceTest {
     todoItemRegisterService.register(arg);
     final ArgumentCaptor<TodoItem> captor = ArgumentCaptor.forClass(TodoItem.class);
     verify(todoItemRepository).save(captor.capture());
-    assertThat(captor.getValue().getOrder()).isEqualTo(6);
+    assertThat(captor.getValue().getNumberOfOrder()).isEqualTo(6);
     assertThat(captor.getValue().getStartedAt()).isEqualTo(startedAt);
     assertThat(captor.getValue().getEndedAt()).isEqualTo(endedAt);
     assertThat(captor.getValue().getStatus()).isEqualTo(TodoItemStatus.ADDED);

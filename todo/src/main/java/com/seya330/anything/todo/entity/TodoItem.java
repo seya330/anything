@@ -35,7 +35,7 @@ public class TodoItem extends BaseEntity {
 
   private LocalDateTime endedAt;
 
-  private int order;
+  private int numberOfOrder;
 
   private boolean isDeleted;
 

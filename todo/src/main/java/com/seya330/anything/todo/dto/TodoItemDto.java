@@ -4,7 +4,6 @@ import com.seya330.anything.todo.constant.TodoItemStatus;
 import lombok.Builder;
 import lombok.Value;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Value
@@ -23,7 +22,7 @@ public class TodoItemDto {
 
   LocalDateTime endedAt;
 
-  Integer order;
+  Integer numberOfOrder;
 
   Boolean isDeleted;
 }

@@ -16,7 +16,6 @@ public class TodoItemSearchQuery {
 
   private Long registeredBy;
 
-
   public BooleanExpression forRegisteredBy(final LongFunction<BooleanExpression> fn) {
     return registeredBy != null ? fn.apply(registeredBy) : null;
   }

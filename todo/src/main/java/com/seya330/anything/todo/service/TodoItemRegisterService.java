@@ -28,7 +28,7 @@ public class TodoItemRegisterService {
         .isStarred(Optional.ofNullable(todoItemRegister.getIsStarred()).orElse(false))
         .startedAt(Optional.ofNullable(todoItemRegister.getStartedAt()).orElse(today.atStartOfDay()))
         .endedAt(Optional.ofNullable(todoItemRegister.getEndedAt()).orElse(today.atTime(LocalTime.MAX)))
-        .order(maxOrder + 1)
+        .numberOfOrder(maxOrder + 1)
         .build();
     todoItemRepository.save(todoItem);
   }
