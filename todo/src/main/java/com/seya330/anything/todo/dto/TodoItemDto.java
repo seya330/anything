@@ -14,7 +14,7 @@ public class TodoItemDto {
 
   String contents;
 
-  TodoItemStatus status;
+  Boolean isCompleted;
 
   Boolean isStarred;
 

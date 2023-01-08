@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 import static com.seya330.anything.todo.entity.QTodoItem.todoItem;
 
@@ -26,11 +27,14 @@ public class TodoItemRepositoryImpl extends QuerydslRepositorySupport implements
 
   @Override
   public int getMaxOrder(final long registeredBy) {
-    return from(todoItem)
+    return Optional.ofNullable(
+        from(todoItem)
         .where(
             todoItem.isDeleted.isFalse(),
-            todoItem.registeredBy.eq(registeredBy)
-        ).select(todoItem.order.max()).fetchOne();
+            todoItem.registeredBy.eq(registeredBy))
+        .select(todoItem.numberOfOrder.max())
+            .fetchOne()
+    ).orElse(0);
   }
 
   @Override

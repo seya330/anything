@@ -1,40 +1,22 @@
 plugins {
-    id "persistence-convention"
-    id 'org.asciidoctor.convert' version '1.5.8'
+  id "common-conventions"
+  id "persistence-convention"
 }
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
 }
 
 repositories {
-    mavenCentral()
-}
-
-ext {
-    set('snippetsDir', file("build/generated-snippets"))
+  mavenCentral()
 }
 
 dependencies {
-    implementation project(':shared')
-}
-
-sourceSets {
-    main {
-        java {
-            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
-        }
-    }
+  implementation project(':shared')
 }
 
 tasks.named('test') {
-    outputs.dir snippetsDir
-    useJUnitPlatform()
-}
-
-tasks.named('asciidoctor') {
-    inputs.dir snippetsDir
-    dependsOn test
+  useJUnitPlatform()
 }

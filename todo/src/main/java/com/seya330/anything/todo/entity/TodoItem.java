@@ -26,8 +26,7 @@ public class TodoItem extends BaseEntity {
 
   private String contents;
 
-  @Enumerated(EnumType.STRING)
-  private TodoItemStatus status;
+  private boolean isCompleted;
 
   private boolean isStarred;
 
@@ -40,13 +39,18 @@ public class TodoItem extends BaseEntity {
   private boolean isDeleted;
 
   public void complete() {
-    if (status == TodoItemStatus.COMPLETED) {
-      throw new TodoItemAlreadyCompletedException();
-    }
-    status = TodoItemStatus.COMPLETED;
+    isCompleted = true;
   }
 
-  public void toggleStar() {
-    isStarred = !isStarred;
+  public void unCompleted() {
+    isCompleted = false;
+  }
+
+  public void modifyStar(final boolean isStarred) {
+    this.isStarred = isStarred;
+  }
+
+  public void delete() {
+    this.isDeleted = true;
   }
 }

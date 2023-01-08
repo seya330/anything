@@ -24,7 +24,7 @@ public class TodoItemRegisterService {
     final LocalDate today = LocalDate.now();
     final TodoItem todoItem = TodoItem.builder()
         .contents(todoItemRegister.getContents())
-        .status(TodoItemStatus.ADDED)
+        .isCompleted(todoItemRegister.getIsCompleted())
         .isStarred(Optional.ofNullable(todoItemRegister.getIsStarred()).orElse(false))
         .startedAt(Optional.ofNullable(todoItemRegister.getStartedAt()).orElse(today.atStartOfDay()))
         .endedAt(Optional.ofNullable(todoItemRegister.getEndedAt()).orElse(today.atTime(LocalTime.MAX)))

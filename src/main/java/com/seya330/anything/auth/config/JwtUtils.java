@@ -51,8 +51,6 @@ public class JwtUtils {
           .build()
           .parseClaimsJws(token)
           .getBody();
-    } catch (ExpiredJwtException e) {
-      e.printStackTrace();
     } catch (Exception e) {
       e.printStackTrace();
     }

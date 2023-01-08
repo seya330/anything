@@ -13,6 +13,8 @@ public class TodoItemRegister {
 
   final String contents;
 
+  final Boolean isCompleted;
+
   final Boolean isStarred;
 
   final LocalDateTime startedAt;

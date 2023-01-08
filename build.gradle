@@ -1,4 +1,5 @@
 plugins {
+  id "common-conventions"
   id "persistence-convention"
   id 'org.asciidoctor.convert' version '1.5.8'
 }
@@ -14,10 +15,6 @@ configurations {
 
 repositories {
   mavenCentral()
-}
-
-ext {
-  set('snippetsDir', file("build/generated-snippets"))
 }
 
 dependencies {
@@ -36,12 +33,8 @@ dependencies {
   runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 }
 
-tasks.named('test') {
-  outputs.dir snippetsDir
-  useJUnitPlatform()
-}
-
-tasks.named('asciidoctor') {
-  inputs.dir snippetsDir
-  dependsOn test
+tasks {
+  springBoot {
+    buildInfo()
+  }
 }

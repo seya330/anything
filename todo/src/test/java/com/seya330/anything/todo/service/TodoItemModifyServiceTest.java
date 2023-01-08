@@ -13,16 +13,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class TodoItemStarToggleServiceTest {
+class TodoItemModifyServiceTest {
 
   @InjectMocks
-  TodoItemStarToggleService todoItemStarToggleService;
+  TodoItemModifyService todoItemModifyService;
 
   @Mock
   TodoItemRepository todoItemRepository;
@@ -34,15 +33,15 @@ class TodoItemStarToggleServiceTest {
         .willReturn(TodoItem.builder()
             .seq(1L)
             .contents("adfsadsf")
-            .status(TodoItemStatus.COMPLETED)
+            .isCompleted(false)
             .isStarred(false)
             .startedAt(LocalDateTime.now())
             .endedAt(LocalDateTime.now())
-            .order(1)
+            .numberOfOrder(1)
             .isDeleted(false)
             .build());
 
-    todoItemStarToggleService.toggle(1L);
+    todoItemModifyService.modifyStar(1L, true);
     verify(todoItemRepository).save(todoItemCaptor.capture());
     final TodoItem result = todoItemCaptor.getValue();
     assertThat(result.isStarred()).isTrue();

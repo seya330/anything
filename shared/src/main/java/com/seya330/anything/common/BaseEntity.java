@@ -26,7 +26,8 @@ public abstract class BaseEntity {
 
   @LastModifiedDate
   private LocalDateTime updatedAt;
-  
+
+  @CreatedBy
   private Long registeredBy;
 }
 
